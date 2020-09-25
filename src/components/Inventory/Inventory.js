@@ -15,9 +15,9 @@ class Inventory extends Component{
       console.log( 'back from GET:', response );
     }).catch( ( err )=>{
       console.log( err );
-      alert( 'nope' )
-    }) //end axios
-  } //end componentDidMount
+      alert( 'nope' );
+    })
+  }
 
   render(){
     return (
