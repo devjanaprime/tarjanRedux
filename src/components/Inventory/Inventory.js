@@ -28,6 +28,25 @@ class Inventory extends Component{
       <div className="Inventory">
         <header className="Inventory-header">
           <h1>Inventory</h1>
+          <div>
+            <select>
+              <option>tiny</option>
+              <option>small</option>
+              <option>medium</option>
+              <option>large</option>
+              <option>huge</option>
+            </select>
+            <select>
+              <option>red</option>
+              <option>orange</option>
+              <option>yellow</option>
+              <option>green</option>
+              <option>glue</option>
+              <option>purple</option>
+            </select>
+            <input type="text" placeholder="description"></input>
+            <button>Add Item</button>
+          </div>
           <ItemList items={ this.state.items } />
         </header>
       </div>
