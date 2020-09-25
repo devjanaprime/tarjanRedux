@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ItemList from '../ItemList/ItemList';
 
 class Inventory extends Component{
   state = {
-    test: null
+    items: []
   }
 
   componentDidMount(){
@@ -13,6 +14,9 @@ class Inventory extends Component{
       url: '/item'
     }).then( ( response )=>{
       console.log( 'back from GET:', response );
+      this.setState({
+        items: response.data
+      })
     }).catch( ( err )=>{
       console.log( err );
       alert( 'nope' );
@@ -24,6 +28,7 @@ class Inventory extends Component{
       <div className="Inventory">
         <header className="Inventory-header">
           <h1>Inventory</h1>
+          <ItemList items={ this.state.items } />
         </header>
       </div>
     ); //end return
