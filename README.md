@@ -21,3 +21,12 @@
 4. redux store
 
 - data from item made available to app through redux store
+
+videos:
+
+- https://vimeo.com/462020741
+- https://vimeo.com/462020984
+- https://vimeo.com/462021141
+- https://vimeo.com/462039219
+- https://vimeo.com/462177861
+- https://vimeo.com/462178150
