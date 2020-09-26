@@ -3,11 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+// our reducer
+const sellReducer = ( state=0, action )=>{
+  console.log( 'in sellReducer:', state, action );
+  if( action.type === "sell" ){
+    console.log( 'selling item with id:', action.payload );
+    state++;
+    console.log( 'updated sales count:', state );
+    return state;
+  }
+  return state;
+}
+// our store
+const myStore = createStore(
+  sellReducer
+)
+// provide store to app
+ReactDOM.render(<Provider store={ myStore }><App /></Provider>,
   document.getElementById('root')
 );
 

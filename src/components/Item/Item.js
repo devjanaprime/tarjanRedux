@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Item extends Component{
   state = {
@@ -20,7 +21,8 @@ class Item extends Component{
 
   sellMe = () => {
     console.log( 'in sellMe:', this.props.item.id );
+    this.props.dispatch( { type:'sell', payload: this.props.item.id } );
   }
 } //end class
 
-export default Item;
+export default connect()(Item);

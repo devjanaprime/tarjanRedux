@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ItemList from '../ItemList/ItemList';
+import { connect } from 'react-redux';
 
 class Inventory extends Component{
   state = {
@@ -61,6 +62,9 @@ class Inventory extends Component{
         <header className="Inventory-header">
           <h1>Inventory</h1>
           <div>
+            Today's Sales: { this.props.reduxState }
+          </div>
+          <div>
             <select onChange={ ( event ) => this.handleChangeFor( event, "size" ) }>
               <option>tiny</option>
               <option>small</option>
@@ -86,4 +90,8 @@ class Inventory extends Component{
   } // end render
 } //end class
 
-export default Inventory;
+const putStateOnProps = ( reduxState ) => ({
+  reduxState
+});
+
+export default connect(putStateOnProps)(Inventory);
