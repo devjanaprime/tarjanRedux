@@ -4,7 +4,7 @@ import './index.css';
 import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { takeEvery, put } from 'redux-saga/effects';
 import createSagaMiddleware from 'redux-saga';
 import axios from 'axios';
@@ -17,8 +17,9 @@ function* watcher(){
 
 function* getShips( action ){
   console.log( 'in getShips:', action );
-  const response = yield axios.get( 'https://swapi.dev/api/starships');
+  const response = yield axios.get( 'https://swapi.dev/api/starships' );
   console.log( 'back from GET:', response.data );
+  yield put( { type: 'showShips', payload: response.data.results } );
 }
 
 // our reducer
@@ -32,9 +33,17 @@ const sellReducer = ( state=0, action )=>{
   }
   return state;
 }
+
+const shipReducer = ( state=[], action )=>{
+  if( action.type === 'showShips' ){
+    console.log( 'in shipReducer:', action.payload );
+  }
+  return state;
+} // end shipReducer
+
 // our store
 const myStore = createStore(
-  sellReducer,
+  combineReducers( { sellReducer, shipReducer }),
   applyMiddleware( sagaMiddleware )
 )
 

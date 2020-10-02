@@ -67,7 +67,7 @@ class Inventory extends Component{
         <header className="Inventory-header">
           <h1>Inventory</h1>
           <div>
-            Today's Sales: { this.props.reduxState }
+            Today's Sales: { this.props.reduxState.sellReducer }
           </div>
           <div>
             <select onChange={ ( event ) => this.handleChangeFor( event, "size" ) }>
