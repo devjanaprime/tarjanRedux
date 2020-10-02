@@ -47,6 +47,11 @@ class Inventory extends Component{
       alert( 'nope' );
     })
   } // end function
+  
+  getShips = () =>{
+    console.log( 'in Inventory.js getShips' );
+    this.props.dispatch( { type: 'getShips', payload: 'all' } );
+  }
 
   handleChangeFor = ( event, property ) =>{
     console.log( 'in handleChangeFor:', property, event.target.value );
@@ -85,6 +90,7 @@ class Inventory extends Component{
           </div>
           <ItemList items={ this.state.items } />
         </header>
+        <button onClick={ this.getShips }>Get Ships</button>
       </div>
     ); //end return
   } // end render
